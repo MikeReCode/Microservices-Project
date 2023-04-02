@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  rabbitmq3:
+    image: rabbitmq:3-management
+
+    ports:
+      - 15672:15672
+      - 5672:5672
+
+    # attache rabbitMQ to the networks in where it will be used 
+    networks:
+      admin_net:
+      main_net:
+
+
+# rabbitMQ is running in a different container. 
+# To be able to interact with different services , rabbitMQ must be in the same network
+# so for that , it needs to be attached to the networks in which the other services are running. 
+# The other services must have a costume network in order to be able to attache rabbitMQ service (i think, its not possible to attache to default network)
+
+networks:
+  admin_net:
+    name: admin_net
+    external: true
+
+  main_net:
+    name: main_net
+    external: true

@@ -7,6 +7,8 @@ services:
       context: .
       dockerfile: Dockerfile
 
+    command: "python manage.py runserver 0.0.0.0:8000"
+
     ports:
       - 8000:8000
 
@@ -22,7 +24,24 @@ services:
 
     depends_on:
       - db
+    
+    networks:
+      admin:
+
   
+  queue: # Separate container that will consume the Queue messages from rabbitMQ
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    command: "python consumer.py"
+    
+    depends_on:
+      - db
+    networks:
+      admin:
+
+
   db:
     image: mysql:8.0
 
@@ -36,3 +55,12 @@ services:
       - .dbdata:/var/lib/mysql
     ports:
       - 33066:3306
+
+    networks:
+      admin:
+
+# custom network in order to be able to attache rabbitMQ
+# # the network needs to be specified in all services 
+networks:
+  admin:
+    name: admin_net

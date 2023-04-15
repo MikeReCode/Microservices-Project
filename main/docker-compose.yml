@@ -7,7 +7,7 @@ services:
       context: .
       dockerfile: Dockerfile
 
-    command: "python main.py"
+    command: "python main_flask.py"
 
     ports:
       - 5000:5000

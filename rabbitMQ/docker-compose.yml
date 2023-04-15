@@ -1,5 +1,6 @@
 version: '3.8'
-
+# !!!!!!  Run this compose file after the other services are running.
+# ######  In this configuration rabbitMQ depends on the other services network
 services:
   rabbitmq3:
     image: rabbitmq:3-management

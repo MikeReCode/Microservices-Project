@@ -37,7 +37,7 @@ services:
     command: "python consumer.py"
     
     depends_on:
-      - db
+      - backend
     networks:
       admin:
 

@@ -79,17 +79,26 @@ WSGI_APPLICATION = 'admin.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': str(os.getenv("MYSQL_DB")),
+#         'USER': str(os.getenv("MYSQL_USER")),
+#         'PASSWORD': str(os.getenv("MYSQL_PASSWORD")),
+#         'HOST': str(os.getenv("MYSQL_HOST")),
+#         'PORT': str(os.getenv("MYSQL_PORT")),
+#     }
+# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': str(os.getenv("MYSQL_DB")),
-        'USER': str(os.getenv("MYSQL_USER")),
-        'PASSWORD': str(os.getenv("MYSQL_PASSWORD")),
-        'HOST': str(os.getenv("MYSQL_HOST")),
-        'PORT': str(os.getenv("MYSQL_PORT")),
+        'NAME': "admindm",
+        'USER': "root",
+        'PASSWORD': 'secret',
+        'HOST': "db",
+        'PORT': 3306,
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators

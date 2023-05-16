@@ -8,7 +8,7 @@ def check_connection(con, ch):
     
     if not con.is_open:
         # Reconnect if the connection is closed
-        print("CHANNEL IS CLOSED: RECONNECTING >>>>")
+        print("ADMIN APP: CHANNEL IS CLOSED: RECONNECTING >>>>")
         connection = pika.BlockingConnection(pika.ConnectionParameters("rabbitmq3"))
         ch = connection.channel()
     return ch
